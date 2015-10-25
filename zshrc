@@ -1,34 +1,22 @@
-# Allow completing of the remainder of a command
-bindkey "^N" insert-last-word
+# Path to your oh-my-zsh installation.
+ZSH=/usr/share/oh-my-zsh/
+#theme
+ZSH_THEME="wezm"
 
-# Show contents of directory after cd-ing into it
-chpwd() {
-  ls -lrthG
-}
+# Uncomment the following line to disable bi-weekly auto-update checks.
+DISABLE_AUTO_UPDATE="true"
 
-# Save a ton of history
-HISTSIZE=20000
-HISTFILE=~/.zsh_history
-SAVEHIST=20000
+plugins=(git git bundler osx rake ruby)
 
-# Enable completion
-autoload -U compinit
-compinit
+# User configuration
 
-# Disable flow control commands (keeps C-s from freezing everything)
-stty start undef
-stty stop undef
+export PATH=$HOME/bin:/usr/local/bin:$PATH
 
-# RVM
-[[ -s "/Users/ben/.rvm/scripts/rvm" ]] && source "/Users/ben/.rvm/scripts/rvm"
 
-# Sourcing of other files
-source $HOME/.dotfiles/zsh/aliases
-source $HOME/.dotfiles/zsh/functions
-source $HOME/.dotfiles/zsh/prompt
-source $HOME/.dotfiles/zsh/z
+ZSH_CACHE_DIR=$HOME/.oh-my-zsh-cache
+if [[ ! -d $ZSH_CACHE_DIR ]]; then
+  mkdir $ZSH_CACHE_DIR
+fi
 
-# Add cabal bin
-export PATH=$PATH:~/.cabal/bin
+source $ZSH/oh-my-zsh.sh
 
-export PATH=$PATH:bin:~/bin:/usr/local/bin:/usr/local/sbin:/usr/local/mysql/bin:/usr/local/git/bin:/usr/bin:/bin:/usr/sbin:/sbin:$HOME/.rvm/bin
