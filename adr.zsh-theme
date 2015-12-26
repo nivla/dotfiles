@@ -1,0 +1,1 @@
+/usr/share/oh-my-zsh/themes/adr.zsh-theme

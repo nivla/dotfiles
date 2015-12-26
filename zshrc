@@ -1,7 +1,7 @@
 # Path to your oh-my-zsh installation.
 ZSH=/usr/share/oh-my-zsh/
 #theme
-ZSH_THEME="wezm"
+ZSH_THEME="adr"
 
 # Uncomment the following line to disable bi-weekly auto-update checks.
 DISABLE_AUTO_UPDATE="true"
@@ -9,9 +9,8 @@ DISABLE_AUTO_UPDATE="true"
 plugins=(git git bundler osx rake ruby)
 
 # User configuration
-
-export PATH=$HOME/bin:/usr/local/bin:$PATH
-
+export EDITOR='vim'
+export PATH=$HOME/scripts:$HOME/.dotfiles/bin:$HOME/bin:/usr/local/bin:$PATH
 
 ZSH_CACHE_DIR=$HOME/.oh-my-zsh-cache
 if [[ ! -d $ZSH_CACHE_DIR ]]; then
