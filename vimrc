@@ -1,6 +1,7 @@
 " ========================================================================
 " Vundle stuff
 " ========================================================================
+set t_Co=256
 set nocompatible " Required by vundle
 filetype off     " Required by vundle
 
@@ -27,7 +28,8 @@ Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-unimpaired'
 Plugin 'vim-ruby/vim-ruby'
 Plugin 'ctrlpvim/ctrlp.vim'
-
+Plugin 'isRuslan/vim-es6'
+Plugin 'mxw/vim-jsx'
 " Clojure
 Plugin 'guns/vim-clojure-static'
 Plugin 'tpope/vim-classpath'
@@ -39,6 +41,7 @@ Plugin 'lambdatoast/elm.vim'
 
 " Colors
 Plugin 'nanotech/jellybeans.vim'
+Plugin 'scrooloose/nerdtree'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -184,7 +187,7 @@ set smarttab
 set noincsearch
 set ignorecase smartcase
 set laststatus=2  " Always show status line.
-set relativenumber
+set number
 set gdefault " assume the /g flag on :s substitutions to replace all matches in a line
 set autoindent " always set autoindenting on
 set bg=light
@@ -274,6 +277,9 @@ function! SearchForCallSites(term)
   cexpr system('ag ' . shellescape(a:term) . '\| grep -v def')
 endfunction
 
+
+" enable jsx in .js
+let g:jsx_ext_required = 0
 " Make CtrlP use ag for listing the files. Way faster and no useless files.
 " Without --hidden, it never finds .travis.yml since it starts with a dot
 let g:ctrlp_user_command = 'ag %s -l --hidden --nocolor -g ""'

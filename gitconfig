@@ -21,6 +21,9 @@
 [alias]
       lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative
 	st = status
+	glog = log -E -i --grep
+	ck = checkout
+	cm = commit -m
 [help]
 	autocorrect = 1
 [branch]
