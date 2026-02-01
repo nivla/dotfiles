@@ -5,11 +5,13 @@
 (load-file "~/.emacs.rc/rc.el")
 
 (add-to-list 'load-path "~/.emacs.local/")
-(add-to-list 'default-frame-alist `(font . "Iosevka-20"))
+(add-to-list 'default-frame-alist `(font . "Iosevka Nerd Font"))
 
 (tool-bar-mode 0)
 (menu-bar-mode 0)
-(scroll-bar-mode 0) 
+(scroll-bar-mode 0)
+(require 'whitespace)
+(global-whitespace-mode 1)
 (global-display-line-numbers-mode 1)
 (ido-mode 1)
 (ido-everywhere 1)
@@ -18,8 +20,16 @@
 (add-to-list 'auto-mode-alist '("\\.[hc]\\(pp\\)?\\'" . simpc-mode))
 
 (rc/require 'smex)
+(rc/require-theme 'gruber-darker)
 (global-set-key (kbd "M-x") 'smex)
 (global-set-key (kbd "C-c C-c M-x") 'smex)
+
+(rc/require 'magit)
+
+(setq magit-auto-revert-mode nil)
+
+(global-set-key (kbd "C-c m s") 'magit-status)
+(global-set-key (kbd "C-c m l") 'magit-log)
 
 ;;; multiple cursors
 (rc/require 'multiple-cursors)
@@ -35,8 +45,8 @@
   "Duplicate current line"
   (interactive)
   (let ((column (- (point) (point-at-bol)))
-        (line (let ((s (thing-at-point 'line t)))
-                (if s (string-remove-suffix "\n" s) ""))))
+	(line (let ((s (thing-at-point 'line t)))
+		(if s (string-remove-suffix "\n" s) ""))))
     (move-end-of-line 1)
     (newline)
     (insert line)
