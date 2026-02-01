@@ -3,6 +3,7 @@ touch ~/.emacs.custom.el
 git config --global user.email "dickson.alvin@gmail.com"
 git config --global user.name "Alvin Dickson"
 
+git config --global core.excludesFile '~/.gitignore'
 # install fonts
 
 FONT_NAME="Iosevka Nerd Font"
