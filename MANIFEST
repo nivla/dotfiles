@@ -2,3 +2,4 @@
 .emacs.rc|symlink|
 .emacs|symlink|
 .gitignore|symlink|
+.Xresources|symlink|
