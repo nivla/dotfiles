@@ -8,7 +8,10 @@
 (load-file "~/.emacs.rc/rc.el")
 
 (add-to-list 'load-path "~/.emacs.local/")
-(add-to-list 'default-frame-alist `(font . "Iosevka-20"))
+( if (eq system-type 'darwin)
+  (add-to-list 'default-frame-alist `(font . "Iosevka-20"))
+ (add-to-list 'default-frame-alist `(font . "Iosevka Nerd Font Mono:size=20"))
+)
 
 (tool-bar-mode 0)
 (menu-bar-mode 0)
@@ -42,6 +45,10 @@
 ;;; (global-set-key (kbd "C-c m s") 'magit-status)
 (global-set-key (kbd "C-c m l") 'magit-log)
 
+
+(rc/require 'move-text)
+(global-set-key (kbd "M-p") 'move-text-up)
+(global-set-key (kbd "M-n") 'move-text-down)
 ;;; multiple cursors
 (rc/require 'multiple-cursors)
 
