@@ -26,8 +26,8 @@
   (add-to-list 'exec-path "/opt/homebrew/bin")
   (setenv "PATH" (concat "/opt/homebrew/bin:" (getenv "PATH"))))
 
-(require 'simpc-mode)
-(add-to-list 'auto-mode-alist '("\\.[hc]\\(pp\\)?\\'" . simpc-mode))
+;; (require 'simpc-mode)
+;;(add-to-list 'auto-mode-alist '("\\.[hc]\\(pp\\)?\\'" . simpc-mode))
 
 (rc/require 'smex)
 (rc/require-theme 'gruber-darker)
@@ -72,6 +72,15 @@
     (forward-char column)))
 
 (global-set-key (kbd "C-,") 'rc/duplicate-line)
+
+(defun rc/set-up-whitespace-handling ()
+  (interactive)
+  (whitespace-mode 1)
+  (add-to-list 'write-file-functions 'delete-trailing-whitespace))
+
+(add-hook 'c-mode-hook 'rc/set-up-whitespace-handling)
+(add-hook 'simpc-mode-hook 'rc/set-up-whitespace-handling)
+(add-hook 'ruby-mode-hooks 'rc/set-up-whitespace-handling)
 
 (defun sqlcmd-run-current-file ()
   (interactive)
